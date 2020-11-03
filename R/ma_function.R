@@ -62,7 +62,7 @@ ma_function <- function(x, na_rm = FALSE) {
   # Remove NA (if required) ----
   if (any(is.na(x))) {
     if (na_rm) {
-      x <- na.omit(x)
+      x <- stats::na.omit(x)
       if (length(x) < 2) {
         stop("x has < 2 non-NA values.")
       }

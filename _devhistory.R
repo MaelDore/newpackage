@@ -46,7 +46,7 @@ ma_function(c(1,2,NA))
 
 ?ma_function
 
-# Add a dependancy in the description of the package
+# Add a dependancy in the DESCRIPTION of the package
 usethis::use_package("stats", type = "Depends") # Pour l'installer aussi. NE PAS FAIRE CA !! Sauf si on construit une extension d'un autre package
 usethis::use_package("stats", type = "Imports") # Mieux car, ça se contente d'aller chercher juste la fonction necessaire
 
@@ -73,16 +73,25 @@ usethis::use_test("ma_fonction")
 
 # Rebuild documentation
 devtools::document()
+?newpackage::ma_function()
 
 # Run tests for all functions
 devtools::test()
 
-
+# Run tests for one function
 library(testthat)
 library(newpackage)
 test_check("newpackage")
 
+# Check our full package
+devtools::check()
+
+# Commit
 usethis::use_git(message = ":panda: Crash test")
 
+# Increment version number
+usethis::use_version(which = "minor") # Increase as minor update  1.X.0
+usethis::use_version(which = "major") # Increase as major update  X.0.0
 
-?newpackage::ma_function()
+# Add a news report for each update
+usethis::use_news_md()
