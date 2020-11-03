@@ -62,16 +62,27 @@ usethis::use_git(message = ":boom: Yeah")
 usethis::use_github(usethis.protocol = "https")
 
 ### Testing our functions!
-# Implement test options in the package
+# Implement test folder and architecture in the package
 usethis::use_testthat()
-
-library(testthat)
-library(newpackage)
 
 # Commit
 usethis::use_git(message = ":koala: Setup testthat")
 
-# Run the test
+# Create a script to test the function
+usethis::use_test("ma_fonction")
+
+# Rebuild documentation
+devtools::document()
+
+# Run tests for all functions
+devtools::test()
+
+
+library(testthat)
+library(newpackage)
 test_check("newpackage")
 
+usethis::use_git(message = ":panda: Crash test")
 
+
+?newpackage::ma_function()

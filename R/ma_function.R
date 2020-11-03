@@ -1,10 +1,16 @@
-#' @title Ma super fonction
+#' @title Ma super fonction = Arithmetic mean
 #'
-#' @description Ceci est ma super function mais la je detaille
+#' @description This function computes the arithmetic mean of a numerical vector.
 #'
-#' @param x C'est un vecteur numerique dont on veut calculer la moyenne
+#' @param x a numerical vector (can contain 'NA' values).
+#' @param na_rm a logical value indicating whether 'NA' values should be
+#' stripped before the computation proceeds.
 #'
-#' @return Un vecteur de longueur 1 qui est la moyenne de x
+#' @return The arithmetic mean of the values as a numeric vector of length one.
+#'
+#' @details An error will be returned if 'x' contains 'NA' values and 'na_rm' is
+#' set to 'FALSE' or if 'x' contains less than two values (after removing 'NA').
+#'
 #' @export
 #'
 #' @import stats
@@ -12,9 +18,9 @@
 #' @importFrom stats na.omit
 #'
 #' @examples
-#' ma_function(1:3)
+#' ma_function(1:10)
 #' \dontrun {
-#' ma_function(1:3)
+#' ma_function(c(1:10, NA)) # Error
 #' }
 
 # Version avec test warnings
@@ -38,19 +44,45 @@ ma_function <- function(x, na_rm = FALSE) {
   if (length(x) < 2) {
     stop("x must be length > 1.")
   }
-  # Check 'na_rm' argument [...] ----
-  # Remove NA (if required) [...] ----
-  # Compute mean [...] ----
+
+  # Check 'na_rm' argument ----
+  if (is.null(na_rm)) {
+    stop("na_rm must be TRUE or FALSE.")
+  }
+  if (sum(is.na(na_rm)) == length(na_rm)) {
+    stop("na_rm cannot be NA.")
+  }
+  if (length(na_rm) > 1) {
+    stop("na_rm must be TRUE or FALSE.")
+  }
+  if (!is.logical(na_rm)) {
+    stop("na_rm must be TRUE or FALSE.")
+  }
+
+  # Remove NA (if required) ----
+  if (any(is.na(x))) {
+    if (na_rm) {
+      x <- na.omit(x)
+      if (length(x) < 2) {
+        stop("x has < 2 non-NA values.")
+      }
+    } else {
+      stop("x contains NA values. Use na_rm = TRUE.")
+    }
+  }
+
+  # Compute mean ----
+  sum(x) / length(x)
 }
 
 # Version scolaire
-ma_function <- function(x, na_rm = FALSE) {
-
-  if( length(is.na(x)) > 0)
-  mean <- sum(x) / length(x)
-
-  return(mean)
-}
+# ma_function <- function(x, na_rm = FALSE) {
+#
+#   if( length(is.na(x)) > 0)
+#   mean <- sum(x) / length(x)
+#
+#   return(mean)
+# }
 
 # Version condensée
 # ma_function <- function(x) sum(x) / length(x)
