@@ -62,6 +62,7 @@ usethis::use_git(message = ":boom: Yeah")
 usethis::use_github(usethis.protocol = "https")
 
 ### Testing our functions!
+
 # Implement test folder and architecture in the package
 usethis::use_testthat()
 
@@ -89,9 +90,26 @@ devtools::check()
 # Commit
 usethis::use_git(message = ":panda: Crash test")
 
+### Version management
+
 # Increment version number
 usethis::use_version(which = "minor") # Increase as minor update  1.X.0
 usethis::use_version(which = "major") # Increase as major update  X.0.0
 
 # Add a news report for each update
 usethis::use_news_md()
+
+# Commit
+usethis::use_git(message = ":package: Release v0.1.0")
+
+### Add a README on .Rmd format
+usethis::use_readme_rmd()
+# Render it into .md
+rmarkdown::render("README.Rmd")
+
+# Ignore the .html from git versioning and package building
+usethis::use_build_ignore("README.html")
+usethis::use_git_ignore("README.html")
+
+# Commit
+usethis::use_git(message = ":pencil: Edit README")

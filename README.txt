@@ -1,2 +1,0 @@
-# newpackage
-My wonderful pacakage

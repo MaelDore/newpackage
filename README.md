@@ -1,5 +1,68 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # newpackage
-My wonderful pacakage
 
-Test erorefgojbqmdfvbqmkj
+<!-- badges: start -->
 
+<!-- badges: end -->
+
+The goal of newpackage is too illustrate the main structure and
+components of an R Package with respect to the CRAN submission policies.
+
+## Installation
+
+You can install the released version of newpackage from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("newpackage")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("MaelDore/newpackage")
+```
+
+## Example
+
+Here is how to use the package `newpackage` and its single function
+`ma_function()`:
+
+``` r
+
+library(newpackage)
+
+## basic example code
+# Compute the mean ----
+newpackage::ma_function(c(1:10))
+#> [1] 5.5
+newpackage::ma_function(c(1:10, NA), na_rm = TRUE)
+#> [1] 5.5
+```
+
+What is special about using `README.Rmd` instead of just `README.md`?
+You can include R chunks like so:
+
+``` r
+summary(cars)
+#>      speed           dist       
+#>  Min.   : 4.0   Min.   :  2.00  
+#>  1st Qu.:12.0   1st Qu.: 26.00  
+#>  Median :15.0   Median : 36.00  
+#>  Mean   :15.4   Mean   : 42.98  
+#>  3rd Qu.:19.0   3rd Qu.: 56.00  
+#>  Max.   :25.0   Max.   :120.00
+```
+
+You’ll still need to render `README.Rmd` regularly, to keep `README.md`
+up-to-date.
+
+You can also embed plots, for example:
+
+<img src="man/figures/README-pressure-1.png" width="100%" />
+
+In that case, don’t forget to commit and push the resulting figure
+files, so they display on GitHub\!

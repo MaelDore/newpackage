@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^_devhistory\.R$
 ^LICENSE\.md$
+^README\.Rmd$
+^README\.html$
