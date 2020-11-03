@@ -107,9 +107,11 @@ usethis::use_readme_rmd()
 # Render it into .md
 rmarkdown::render("README.Rmd")
 
-# Ignore the .html from git versioning and package building
+# Ignore the .html from git versionning and package building
 usethis::use_build_ignore("README.html")
 usethis::use_git_ignore("README.html")
 
 # Commit
 usethis::use_git(message = ":pencil: Edit README")
+# Push
+usethis::use_github(protocol = "https")
