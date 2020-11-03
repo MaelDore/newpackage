@@ -61,4 +61,17 @@ usethis::use_git(message = ":boom: Yeah")
 # Create repo on Github from local ("push")
 usethis::use_github(usethis.protocol = "https")
 
+### Testing our functions!
+# Implement test options in the package
+usethis::use_testthat()
+
+library(testthat)
+library(newpackage)
+
+# Commit
+usethis::use_git(message = ":koala: Setup testthat")
+
+# Run the test
+test_check("newpackage")
+
 
