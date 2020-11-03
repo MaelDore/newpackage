@@ -18,3 +18,5 @@ Imports:
     stats
 URL: https://github.com/MaelDore/newpackage
 BugReports: https://github.com/MaelDore/newpackage/issues
+Suggests: 
+    testthat
