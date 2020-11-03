@@ -17,6 +17,32 @@
 #' ma_function(1:3)
 #' }
 
+# Version avec test warnings
+ma_function <- function(x, na_rm = FALSE) {
+  # Check 'x' argument ----
+  if (missing(x)) {
+    stop("Missing x.")
+  }
+  if (is.null(x)) {
+    stop("x must be a numerical vector.")
+  }
+  if (sum(is.na(x)) == length(x)) {
+    stop("x cannot be NA.")
+  }
+  if (!is.vector(x)) {
+    stop("x must be a numerical vector.")
+  }
+  if (!is.numeric(x)) {
+    stop("x must be a numerical vector.")
+  }
+  if (length(x) < 2) {
+    stop("x must be length > 1.")
+  }
+  # Check 'na_rm' argument [...] ----
+  # Remove NA (if required) [...] ----
+  # Compute mean [...] ----
+}
+
 # Version scolaire
 ma_function <- function(x, na_rm = FALSE) {
 
